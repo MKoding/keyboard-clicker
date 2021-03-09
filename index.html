@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="media/other/png/icon.png">
+    <title>Keyboard Clicker</title>
+</head>
+<body>
+    <div id="column-1">
+        <div id="clicker">
+            <div id="clicker-titles">
+                <h2 id="title">Keyboard Clicker</h2>
+                <div id="values">
+                    <h1 id="counter">0</h1><img id="money-gif" src="media/other/gif/money.gif">
+                    <h3 id="production">per second: 0</h3>
+                </div>
+            </div>
+            
+            <div id="pc-area">
+                <img id="pc-image" src="media/other/svg/macintosh-complete.svg">
+                <div id="scroll-area" scrolling="auto">
+                    <h3 id="code">
+                        <pre id="correct-code"></pre>
+                        <pre id="incorrect-code" class="no-highlight"></pre>
+                        <pre id="left-position-code" class="no-highlight"></pre>
+                        <pre id="current-code" class="no-highlight">Booting KEY-OS...</pre>
+                    </h3>
+                </div>
+                <textarea id="code-input"
+                wrap="off"
+                placeholder="Click here and start typing..."
+                onkeydown="insertTab(this, event);"
+                autofocus></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="vertical-gap"></div>
+    <div id="column-2">
+        <div id="market">
+            <h1 id="market-title">Market</h1>
+            <div id="market-codes"
+            onmouseover='openCodesMarket();'
+            onmousemove='openCodesMarket();'
+            onmouseout='closeCodesMarket();'>
+                <div class="horizontal-gap">
+                    <h4 id="codes-horizontal-gap-title" class="horizontal-gap-title"></h4>
+                </div>
+                <div id="codes-descriptions"></div>
+                <div id="codes-buttons"></div>
+            </div>
+            <div id="market-trinkets"
+            onmouseover='openTrinketsMarket();'
+            onmousemove='openTrinketsMarket();'
+            onmouseout='closeTrinketsMarket();'>
+                <div class="horizontal-gap">
+                    <h4 id="trinkets-horizontal-gap-title" class="horizontal-gap-title"></h4>
+                </div>
+                <div id="trinkets-descriptions"></div>
+                <div id="trinkets-buttons"></div>
+            </div>
+            <div id="market-items"
+            onmouseover='openItemsMarket();'
+            onmouseout='closeItemsMarket();'>
+                <div class="horizontal-gap">
+                    <h4 id="items-horizontal-gap-title" class="horizontal-gap-title"></h4>
+                </div>
+                <div id="market-functions">
+                    <div id="buy-sell">
+                        <button id="buy-button" onclick='setMarketState("buy");'>Buy</button>
+                        <button id="sell-button" onclick='setMarketState("sell");'>Sell</button>
+                    </div>
+        
+                    <button id="market-multiplier-button-1" onclick="setMarketMultiplier(1);">1</button>
+                    <button id="market-multiplier-button-10" onclick="setMarketMultiplier(10);">10</button>
+                    <button id="market-multiplier-button-100" onclick="setMarketMultiplier(100);">100</button>
+                    <button id="market-multiplier-button-all" class="invisible-button" onclick="setMarketMultiplier('all');">All</button>
+                </div>
+                <div id="items-descriptions"></div>
+                <div id="items-buttons"></div>
+            </div>
+        </div>
+        <div class="horizontal-gap"></div>
+        <div id="options">
+            <h1 id="options-title">Options</h1>
+            <div class="horizontal-gap"></div>
+            <button id="save-button" class="option-button"
+            onclick="save();"
+            onmouseover='optionButtonOver("save-button");'
+            onmouseout='optionButtonOut("save-button");'
+            >SAVE</button>
+            <button id="load-button" class="option-button"
+            onclick="load();"
+            onmouseover='optionButtonOver("load-button");'
+            onmouseout='optionButtonOut("load-button");'
+            >LOAD</button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="game.js"></script>
+</body>
+</html>

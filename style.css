@@ -1,0 +1,562 @@
+@font-face { font-family: Basis; src: url('media/other/font/basis33.ttf'); } 
+
+* {
+  font-family: 'DotGothic16', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+*::selection {
+  background: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  grid-gap: 0px;
+  grid-template-columns: auto 16px 384px;
+  grid-template-rows: 100%;
+  background: url(media/other/png/background.png);
+}
+
+.visible-button {
+  display: inline;
+}
+
+.invisible-button {
+  display: none;
+}
+
+#clicker-titles {
+  text-align: center;
+  color: white;
+}
+
+#title {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 50%);
+  border-radius: 10px;
+}
+
+#values {
+  padding: 5px;
+  line-height: 5px;
+  background-color: rgba(0, 0, 0, 50%);
+}
+
+#values #counter {
+  display: inline-block;
+}
+
+#values #money-gif {
+  display: inline;
+  padding-left: 10px;
+  height: 25px;
+  width: auto;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+#pc-area {
+  position: relative;
+  text-align: left;
+  color: white;
+  margin: auto;
+  height: 85vh;
+  width: 45.33vh;
+}
+
+#pc-image {
+  height: 95%;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+} 
+
+#scroll-area {
+  height: 25%;
+  width: 65%;
+  position: absolute;
+  top: 15.6%;
+  left: 50%;
+  transform: translate(-50%, -14.3%);
+  -ms-transform: translate(-50%, -14.3%);
+  overflow: auto;
+}
+
+#scroll-area::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+#scroll-area::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+}
+
+#scroll-area::-webkit-scrollbar-thumb {
+  background: linear-gradient(left, rgba(0,0,0,0.1), rgba(0,0,0,0.15));
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+#scroll-area::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(left, rgba(0,0,0,0.3), rgba(0,0,0,0.4));
+}
+
+#scroll-area::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
+
+#code {
+  display: inline-table;
+  font-family: 'Basis', sans-serif;
+}
+
+#correct-code,
+#incorrect-code,
+#current-code,
+#left-position-code {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  font-family: 'Basis', sans-serif;
+  font-size: 30px;
+  text-shadow: 0px 0px 1px black;
+}
+
+#current-code {
+  color: #373a64;
+}
+
+#correct-code {
+  color: rgb(82, 255, 82);
+}
+
+#incorrect-code {
+  color: rgb(179, 0, 0);
+}
+
+#code-input {
+  height: 11.5%;
+  width: 73.5%;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -0%);
+  -ms-transform: translate(-50%, -0%);
+  overflow: auto;
+  user-select: auto;
+  -webkit-user-select: auto;
+  -moz-user-select: auto;
+  -ms-user-select: auto;
+  resize: none;
+  outline: none;
+  -moz-tab-size: 4;
+  tab-size: 4;
+  font-family: 'Basis', sans-serif;
+  border: none;
+  color: white;
+  font-size: 30px;
+  background-color: transparent;
+}
+
+#code-input::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+#code-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: white;
+}
+
+#code-input::-ms-input-placeholder { /* Microsoft Edge */
+ color: white;
+}
+
+#code-input::selection {
+  background: rgba(0, 183, 255, 0.5);
+}
+
+#code-input::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+#code-input::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);
+  box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+}
+
+#code-input::-webkit-scrollbar-thumb {
+  background: linear-gradient(left, rgba(0,0,0,0.1), rgba(0,0,0,0.15));
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+#code-input::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(left, rgba(0,0,0,0.3), rgba(0,0,0,0.4));
+}
+
+#code-input::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
+
+#vertical-gap {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 16px;
+  background: url(/media/other/png/vertical-gap.png);
+}
+
+.horizontal-gap {
+  position: relative;
+  height: 16px;
+  width: 100%;
+  background: url(/media/other/png/horizontal-gap.png);
+}
+
+.horizontal-gap-title {
+  position: absolute;
+  top: -15%;
+  left: 2%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: white;
+  text-shadow: 0px 0px 4px #000;
+  text-align: left;
+  font-size: 13px;
+}
+
+#market-title {
+  text-align: center;
+  color: white;
+}
+
+.description {
+  display: none; 
+  position: absolute;
+  background-color: #161616; 
+  color: white;
+  width: 400px;
+  padding: 20px;
+}
+
+.description #description-image {
+  height: auto;
+  width: 48px;
+  float: left;
+  padding-right: 10px;
+}
+
+.description #description-name {
+  font-size: 16px;
+}
+
+.description #description-code-name {
+  font-size: 30px;
+}
+
+.description #description-owned {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.description .description-inventory-value {
+  display: inline;
+}
+
+.description #description-group {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.description .description-group-value {
+  display: inline;
+}
+
+.description #description-price {
+  float: right;
+  width: 25%;
+  text-align: right;
+}
+
+.description .money-simbol {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  height: 16px;
+  width: 16px;
+  display: inline;
+}
+
+.description .description-price-value {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: inline;
+}
+
+.description #description-separation {
+  height: auto;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.description .description-code-owned {
+  text-align: center;
+  font-size: 12px;
+}
+
+.description .description-trinket-owned {
+  text-align: center;
+  font-size: 12px;
+}
+
+.description #description-production {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.description .description-production-value {
+  display: inline;
+}
+
+.description #description-total-production {
+  display: inline-block;
+  font-size: 12px;
+}
+
+.description .description-inventory-production-value {
+  display: inline;
+}
+
+.description .description-total-production-value {
+  display: inline;
+}
+
+.visible-owned {
+  display: inherit;
+}
+
+.invisible-owned {
+  display: none;
+}
+
+.code-button {
+  position: relative;
+  font: inherit;
+  height: 64px;
+  width: 64px;
+  display: inline;
+  border: none;
+  background: url(media/other/svg/frame.svg);
+  background-color: rgba(16, 16, 16, 50%);
+}
+
+#code-button-image {
+  height: auto;
+  width: 48px;
+  display: inline;
+}
+
+.code-owned {
+  height: auto;
+  width: 64px;
+  position: absolute;
+  top: 77%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.trinket-button {
+  position: relative;
+  font: inherit;
+  height: 64px;
+  width: 64px;
+  border: none;
+  background: url(media/other/svg/frame.svg);
+  background-color: rgba(16, 16, 16, 50%);
+}
+
+#trinket-button-image {
+  height: auto;
+  width: 48px;
+  display: inline;
+}
+
+.trinket-owned {
+  height: auto;
+  width: 64px;
+  position: absolute;
+  top: 77%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+#market-functions {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  background-color: #161616;
+}
+
+#buy-sell {
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+#buy-button,
+#sell-button {
+  display: block;
+  margin: auto;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  font-size: 15px;
+}
+
+#buy-button {
+  color: white;
+  text-shadow: 0px 1px 0px #000,0px 0px 1px #fff,0px 0px 4px #fff;
+}
+
+#sell-button {
+  color: gray;
+}
+
+#market-multiplier-button-1,
+#market-multiplier-button-10,
+#market-multiplier-button-100,
+#market-multiplier-button-all {
+  margin: auto;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+}
+
+#market-multiplier-button-1 {
+  color: white;
+  text-shadow: 0px 1px 0px #000,0px 0px 1px #fff,0px 0px 4px #fff;
+}
+
+#market-multiplier-button-10,
+#market-multiplier-button-100,
+#market-multiplier-button-all {
+  color: gray;
+}
+
+.item-button {
+  position: relative;
+  width: 100%;
+  background: url(media/other/png/shop-tile.png);
+  border: none;
+  height: 70px;
+  text-align: left;
+}
+
+.item-button #item-button-image {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translate(-0%, -50%);
+  -ms-transform: translate(-0%, -50%);
+  height: 45px;
+  width: 45px;
+}
+
+.item-button #name {
+  position: absolute;
+  top: 32%;
+  left: 17%;
+  transform: translate(-0%, -50%);
+  -ms-transform: translate(-0%, -50%);
+  font-size: 28px;
+  text-shadow: 0px 0px 4px #000;
+  color: white;
+}
+
+.item-button .money-simbol {
+  position: absolute;
+  top: 72%;
+  left: 17%;
+  transform: translate(-0%, -50%);
+  -ms-transform: translate(-0%, -50%);
+  height: 16px;
+  width: 16px;
+  padding-right: 3px;
+}
+
+.item-button .item-price {
+  position: absolute;
+  top: 73%;
+  left: 23%;
+  transform: translate(-0%, -50%);
+  -ms-transform: translate(-0%, -50%);
+  padding: 0;
+  margin: 0;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  text-shadow: 0px 0px 2px #000;
+  color: lightgreen;
+}
+
+.item-button .item-inventory {
+  position: absolute;
+  top: 50%;
+  left: 97%;
+  transform: translate(-100%, -50%);
+  -ms-transform: translate(-100%, -50%);
+  font-family: 'Roboto', sans-serif;
+  font-size: 40px;
+  font-weight: 900;
+  opacity: 0.2;
+  color: black;
+  text-shadow: 0px 0px 3px #000;
+}
+
+#options {
+  display: inline-table;
+  width: 100%;
+}
+
+#options-title {
+  text-align: center;
+  color: white;
+}
+
+.option-button {
+  display: inline;
+  width: 50%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  height: 70px;
+  text-align: center;
+  background-color: transparent;
+  font-size: 25px;
+  color: white;
+}

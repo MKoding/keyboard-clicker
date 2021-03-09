@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="media/other/icon.svg">
+    <link rel="mask-icon" href="media/other/icon.svg">
+    <title>Keyboard Clicker</title>
+</head>
+<body>
+    <div id="clicker">
+        <h1 id="counter">0 &lt;/&gt;</h1>
+        <h2 id="production">per second: 0</h2>
+        <img id="type-image" src="media/items/Library.svg"/>
+        <p>Type the given code:</p>
+        <h3 id="code">
+            <pre id="correct-code"></pre>
+            <pre id="incorrect-code" class="no-highlight"></pre>
+            <pre id="current-code" class="no-highlight">Hello world!</pre>
+        </h3>
+        <br>
+        <textarea id="code-input" placeholder="Start typing..." rows="25" cols="55" onkeydown="insertTab(this, event);" autofocus></textarea>
+    </div>
+    <div id="inventory"></div>
+    <div id="market">
+        <div id="market-codes">
+            <button id="0-code-button" class="code-button" onclick="setCode(0);">HTML</button>
+            <button id="1-code-button" class="code-button" onclick="buyCode(1);">CSS [10,000 &lt;/&gt;]</button>
+            <button id="2-code-button" class="code-button" onclick="buyCode(2);">JAVASCRIPT [1 million &lt;/&gt;]</button>
+        </div>
+        <div id="market-trinkets">
+            <span id="trinket-description"
+            style="display:none; 
+            position:absolute; 
+            border-style: solid; 
+            background-color: white; 
+            padding: 5px;">TESTEATE ESTA BRO</span>
+            <button id="0-trinket-button" class="trinket-button" onclick="buyTrinket(0);"
+                onmousemove="ShowContent('trinket-description', 0); return true;"
+                onmouseover="ShowContent('trinket-description', 0); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">REINFORCED FINGERS [100 &lt;/&gt;]</button>
+            <button id="1-trinket-button" class="trinket-button" onclick="buyTrinket(1);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">MAGIC FINGERS [500 &lt;/&gt;]</button>
+            <button id="2-trinket-button" class="trinket-button" onclick="buyTrinket(2);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">ALERT ("ERROR HERE") [500 &lt;/&gt;]</button>
+            <button id="3-trinket-button" class="trinket-button" onclick="buyTrinket(3);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">PLASTIC LIBRARY [1,000 &lt;/&gt;]</button>
+            <button id="4-trinket-button" class="trinket-button" onclick="buyTrinket(4);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">CONSOLE.LOG("F") [2,000 &lt;/&gt;]</button>
+            <button id="5-trinket-button" class="trinket-button" onclick="buyTrinket(5);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">IRON LIBRARY [5,000 &lt;/&gt;]</button>
+            <button id="6-trinket-button" class="trinket-button" onclick="buyTrinket(6);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">PIANIST FINGERS [10,000 &lt;/&gt;]</button>
+            <button id="7-trinket-button" class="trinket-button" onclick="buyTrinket(7);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">PLASTIC DOCUMENTATION [11,000 &lt;/&gt;]</button>
+            <button id="8-trinket-button" class="trinket-button" onclick="buyTrinket(8);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">NOOB TEST [20,000 &lt;/&gt;]</button>
+            <button id="9-trinket-button" class="trinket-button" onclick="buyTrinket(9);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">STEEL LIBRARY [50,000 &lt;/&gt;]</button>
+            <button id="10-trinket-button" class="trinket-button" onclick="buyTrinket(10);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">LAPTOP KEYBOARD [50,000 &lt;/&gt;]</button>
+            <button id="11-trinket-button" class="trinket-button" onclick="buyTrinket(11);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">IRON DOCUMENTATION [55,000 &lt;/&gt;]</button>
+            <button id="12-trinket-button" class="trinket-button" onclick="buyTrinket(12);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">AMBIDREXTROUS [100,000 &lt;/&gt;]</button>
+            <button id="13-trinket-button" class="trinket-button" onclick="buyTrinket(13);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">NOTEPAD [120,000 &lt;/&gt;]</button>
+            <button id="14-trinket-button" class="trinket-button" onclick="buyTrinket(14);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">STEEL DOCUMENTATION [550,000 &lt;/&gt;]</button>
+            <button id="15-trinket-button" class="trinket-button" onclick="buyTrinket(15);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SUBLIMETEXT [600,000 &lt;/&gt;]</button>
+            <button id="16-trinket-button" class="trinket-button" onclick="buyTrinket(16);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">VERSIONS OF THE CODE [1.3 million &lt;/&gt;]</button>
+            <button id="17-trinket-button" class="trinket-button" onclick="buyTrinket(17);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">AVERAGE TEST [2 million &lt;/&gt;]</button>
+            <button id="18-trinket-button" class="trinket-button" onclick="buyTrinket(18);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">TITANIUM LIBRARY [5 million &lt;/&gt;]</button>
+            <button id="19-trinket-button" class="trinket-button" onclick="buyTrinket(19);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">MEMBRANE KEYBOARD [5 million &lt;/&gt;]</button>
+            <button id="20-trinket-button" class="trinket-button" onclick="buyTrinket(20);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">EMMET [6 million &lt;/&gt;]</button>
+            <button id="21-trinket-button" class="trinket-button" onclick="buyTrinket(21);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">CODE BACKUPS [6.5 million &lt;/&gt;]</button>
+            <button id="22-trinket-button" class="trinket-button" onclick="buyTrinket(22);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">POLYDACTYLY [10 million &lt;/&gt;]</button>
+            <button id="23-trinket-button" class="trinket-button" onclick="buyTrinket(23);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">MONOCHROME MONITOR [14 million &lt;/&gt;]</button>
+            <button id="24-trinket-button" class="trinket-button" onclick="buyTrinket(24);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">TITANIUM DOCUMENTATION [55 million &lt;/&gt;]</button>
+            <button id="25-trinket-button" class="trinket-button" onclick="buyTrinket(25);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">GOOGLE DRIVE [65 million &lt;/&gt;]</button>
+            <button id="26-trinket-button" class="trinket-button" onclick="buyTrinket(26);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">COLOR CRT [70 million &lt;/&gt;]</button>
+            <button id="27-trinket-button" class="trinket-button" onclick="buyTrinket(27);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">CARPAL TUNNEL PREVENTION [100 million &lt;/&gt;]</button>
+            <button id="28-trinket-button" class="trinket-button" onclick="buyTrinket(28);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">GOOD TEST [200 million &lt;/&gt;]</button>
+            <button id="29-trinket-button" class="trinket-button" onclick="buyTrinket(29);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">NOOB EMPLOYEE [200 million &lt;/&gt;]</button>
+            <button id="30-trinket-button" class="trinket-button" onclick="buyTrinket(30);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">ADAMANTIUM LIBRARY [500 million &lt;/&gt;]</button>
+            <button id="31-trinket-button" class="trinket-button" onclick="buyTrinket(31);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">MECHANICAL KEYBOARD [500 million &lt;/&gt;]</button>
+            <button id="32-trinket-button" class="trinket-button" onclick="buyTrinket(32);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">MORE PLUGINS [600 million &lt;/&gt;]</button>
+            <button id="33-trinket-button" class="trinket-button" onclick="buyTrinket(33);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">FLAT TFT [700 million &lt;/&gt;]</button>
+            <button id="34-trinket-button" class="trinket-button" onclick="buyTrinket(34);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SHORTCUT ROOKIE [1 billion &lt;/&gt;]</button>
+            <button id="35-trinket-button" class="trinket-button" onclick="buyTrinket(35);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">THE "I KNOW HTML" GUY [1 billion &lt;/&gt;]</button>
+            <button id="36-trinket-button" class="trinket-button" onclick="buyTrinket(36);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">ONE PERSON COMPANY [3.3 billion &lt;/&gt;]</button>
+            <button id="37-trinket-button" class="trinket-button" onclick="buyTrinket(37);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">ADAMANTIUM DOCUMENTATION [5.5 billion &lt;/&gt;]</button>
+            <button id="38-trinket-button" class="trinket-button" onclick="buyTrinket(38);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">GITHUB [6.5 billion &lt;/&gt;]</button>
+            <button id="39-trinket-button" class="trinket-button" onclick="buyTrinket(39);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SHORTCUT APPRETICE [10 billion &lt;/&gt;]</button>
+            <button id="40-trinket-button" class="trinket-button" onclick="buyTrinket(40);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">MULTILANGUAGE KNOWER [10 billion &lt;/&gt;]</button>
+            <button id="41-trinket-button" class="trinket-button" onclick="buyTrinket(41);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">GARAGE COMPANY [16.5 billion &lt;/&gt;]</button>
+            <button id="42-trinket-button" class="trinket-button" onclick="buyTrinket(42);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">TDD [20 billion &lt;/&gt;]</button>
+            <button id="43-trinket-button" class="trinket-button" onclick="buyTrinket(43);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">MITHRIL LIBRARY [50 billion &lt;/&gt;]</button>
+            <button id="44-trinket-button" class="trinket-button" onclick="buyTrinket(44);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">PBT KEYCAPS [50 billion &lt;/&gt;]</button>
+            <button id="45-trinket-button" class="trinket-button" onclick="buyTrinket(45);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">VISUAL STUDIO CODE [60 billion &lt;/&gt;]</button>
+            <button id="46-trinket-button" class="trinket-button" onclick="buyTrinket(46);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">WIDE ASPECT RATIO [70 billion &lt;/&gt;]</button>
+            <button id="47-trinket-button" class="trinket-button" onclick="buyTrinket(47);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">STARTUP [165 billion &lt;/&gt;]</button>
+            <button id="48-trinket-button" class="trinket-button" onclick="buyTrinket(48);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">MITHRIL DOCUMENTATION [550 billion &lt;/&gt;]</button>
+            <button id="49-trinket-button" class="trinket-button" onclick="buyTrinket(49);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">CORRECT COMMITS [650 billion &lt;/&gt;]</button>
+            <button id="50-trinket-button" class="trinket-button" onclick="buyTrinket(50);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">JUNIOR ENGINEER [1 trillion &lt;/&gt;]</button>
+            <button id="51-trinket-button" class="trinket-button" onclick="buyTrinket(51);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">CUSTOM KEYBOARD [5 trillion &lt;/&gt;]</button>
+            <button id="52-trinket-button" class="trinket-button" onclick="buyTrinket(52);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">WEBSTORM [6 trillion &lt;/&gt;]</button>
+            <button id="53-trinket-button" class="trinket-button" onclick="buyTrinket(53);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">1080P IPS [7 trillion &lt;/&gt;]</button>
+            <button id="54-trinket-button" class="trinket-button" onclick="buyTrinket(54);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SHORTCUT MASTER [10 trillion &lt;/&gt;]</button>
+            <button id="55-trinket-button" class="trinket-button" onclick="buyTrinket(55);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">AVERAGE COMPANY [16.5 trillion &lt;/&gt;]</button>
+            <button id="56-trinket-button" class="trinket-button" onclick="buyTrinket(56);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">ANTIBUGS TEST [20 trillion &lt;/&gt;]</button>
+            <button id="57-trinket-button" class="trinket-button" onclick="buyTrinket(57);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">DAEDRIC LIBRARY [50 trillion &lt;/&gt;]</button>
+            <button id="58-trinket-button" class="trinket-button" onclick="buyTrinket(58);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">TERMINAL + GIT [65 trillion &lt;/&gt;]</button>
+            <button id="59-trinket-button" class="trinket-button" onclick="buyTrinket(59);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SOFTWARE ENGINEER [100 trillion &lt;/&gt;]</button>
+            <button id="60-trinket-button" class="trinket-button" onclick="buyTrinket(60);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">LUBRICATED SWITCHES [500 trillion &lt;/&gt;]</button>
+            <button id="61-trinket-button" class="trinket-button" onclick="buyTrinket(61);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">DAEDRIC DOCUMENTATION [550 trillion &lt;/&gt;]</button>
+            <button id="62-trinket-button" class="trinket-button" onclick="buyTrinket(62);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">4K IPS [700 trillion &lt;/&gt;]</button>
+            <button id="63-trinket-button" class="trinket-button" onclick="buyTrinket(63);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SILICON VALLEY [1.65 quadrillion &lt;/&gt;]</button>
+            <button id="64-trinket-button" class="trinket-button" onclick="buyTrinket(64);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">VIM [6 quadrillion &lt;/&gt;]</button>
+            <button id="65-trinket-button" class="trinket-button" onclick="buyTrinket(65);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SHORTCUT LEGEND [10 quadrillion &lt;/&gt;]</button>
+            <button id="66-trinket-button" class="trinket-button" onclick="buyTrinket(66);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SENIOR SOFTWARE ENGINEER [10 quadrillion &lt;/&gt;]</button>
+            <button id="67-trinket-button" class="trinket-button" onclick="buyTrinket(67);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">GODLIKE TEST [20 quadrillion &lt;/&gt;]</button>
+            <button id="68-trinket-button" class="trinket-button" onclick="buyTrinket(68);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">OPTICAL SWITCHES [50 quadrillion &lt;/&gt;]</button>
+            <button id="69-trinket-button" class="trinket-button" onclick="buyTrinket(69);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">DARK MATTER LIBRARY [50 quadrillion &lt;/&gt;]</button>
+            <button id="70-trinket-button" class="trinket-button" onclick="buyTrinket(70);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">GIT SHORTCUTS [65 quadrillion &lt;/&gt;]</button>
+            <button id="71-trinket-button" class="trinket-button" onclick="buyTrinket(71);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">SILICON VALLEY KING [165 quadrillion &lt;/&gt;]</button>
+            <button id="72-trinket-button" class="trinket-button" onclick="buyTrinket(72);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">DARK MATTER DOCUMENTATION [550 quadrillion &lt;/&gt;]</button>
+            <button id="73-trinket-button" class="trinket-button" onclick="buyTrinket(73);"
+                onmousemove="ShowContent('trinket-description'); return true;"
+                onmouseover="ShowContent('trinket-description'); return true;"
+                onmouseout="HideContent('trinket-description'); return true;">4K HDR OLED [700 quadrillion &lt;/&gt;]</button>
+        </div>
+        <div id="market-functions">
+            <div id="buy-sell">
+                <button id="buy-button" onclick='setMarketState("buy");'>Buy</button>
+                <button id="sell-button" onclick='setMarketState("sell");'>Sell</button>
+            </div>
+
+            <button id="market-multiplier-button-1" onclick="setMarketMultiplier(1);">1</button>
+            <button id="market-multiplier-button-10" onclick="setMarketMultiplier(10);">10</button>
+            <button id="market-multiplier-button-100" onclick="setMarketMultiplier(100);">100</button>
+            <button id="market-multiplier-button-all" class="invisible-button" onclick="setMarketMultiplier('all');">All</button>
+        </div>
+        <div id="market-items">
+            <span id="item-description"
+            style="display:none; 
+            position:absolute; 
+            border-style: solid; 
+            background-color: white; 
+            padding: 5px;"></span>
+            <button id="0-item-button" class="item-button" onclick="buyItem(0);"
+            onmousemove="ShowContent('item-description', 0); return true;"
+            onmouseover="ShowContent('item-description', 0); return true;"
+            onmouseout="HideContent('item-description'); return true;">AUTOMATIC TEST [15 &lt;/&gt;]</button>
+            <button id="1-item-button" class="item-button" onclick="buyItem(1);"
+            onmousemove="ShowContent('item-description', 1); return true;"
+            onmouseover="ShowContent('item-description', 1); return true;"
+            onmouseout="HideContent('item-description'); return true;">LIBRARY [100 &lt;/&gt;]</button>
+            <button id="2-item-button" class="item-button" onclick="buyItem(2);"
+            onmousemove="ShowContent('item-description', 2); return true;"
+            onmouseover="ShowContent('item-description', 2); return true;"
+            onmouseout="HideContent('item-description'); return true;">DOCUMENTATION [1,100 &lt;/&gt;]</button>
+            <button id="3-item-button" class="item-button" onclick="buyItem(3);"
+            onmousemove="ShowContent('item-description', 3); return true;"
+            onmouseover="ShowContent('item-description', 3); return true;"
+            onmouseout="HideContent('item-description'); return true;">IDE [12,000 &lt;/&gt;]</button>
+            <button id="4-item-button" class="item-button" onclick="buyItem(4);"
+            onmousemove="ShowContent('item-description', 4); return true;"
+            onmouseover="ShowContent('item-description', 4); return true;"
+            onmouseout="HideContent('item-description'); return true;">GIT REPOSITORY [130,000 &lt;/&gt;]</button>
+            <button id="5-item-button" class="item-button" onclick="buyItem(5);"
+            onmousemove="ShowContent('item-description', 5); return true;"
+            onmouseover="ShowContent('item-description', 5); return true;"
+            onmouseout="HideContent('item-description'); return true;">SCREEN [1.4 million &lt;/&gt;]</button>
+            <button id="6-item-button" class="item-button" onclick="buyItem(6);"
+            onmousemove="ShowContent('item-description', 6); return true;"
+            onmouseover="ShowContent('item-description', 6); return true;"
+            onmouseout="HideContent('item-description'); return true;">EMPLOYEE [20 million &lt;/&gt;]</button>
+            <button id="7-item-button" class="item-button" onclick="buyItem(7);"
+            onmousemove="ShowContent('item-description', 7); return true;"
+            onmouseover="ShowContent('item-description', 7); return true;"
+            onmouseout="HideContent('item-description'); return true;">SOFTWARE COMPANY [330 million &lt;/&gt;]</button>
+        </div>
+    </div>
+    <div id="options">
+        <button onclick="save();">SAVE</button>
+        <button onclick="load();">LOAD</button>
+    </div>
+
+    <script type="text/javascript" src="game.js"></script>
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script></body>
+</html>
