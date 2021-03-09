@@ -220,14 +220,14 @@ body {
   top: 0;
   height: 100vh;
   width: 16px;
-  background: url(/media/other/png/vertical-gap.png);
+  background: url(media/other/png/vertical-gap.png);
 }
 
 .horizontal-gap {
   position: relative;
   height: 16px;
   width: 100%;
-  background: url(/media/other/png/horizontal-gap.png);
+  background: url(media/other/png/horizontal-gap.png);
 }
 
 .horizontal-gap-title {
